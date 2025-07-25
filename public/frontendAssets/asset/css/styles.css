@@ -150,6 +150,7 @@ header {
   padding: 10px 20px;
   border-radius: 25px;
   transition: all 0.3s ease;
+  margin: 0 2px;
 }
 
 .navbar-light .navbar-nav .nav-link:hover,

@@ -19,6 +19,13 @@ class FrontendController extends Controller
         return view('frontend.shop', compact('data'));
     }
 
+    public function product($id)
+    {
+        $data['title'] = 'Product Details - BabyBloom';
+        $data['productId'] = 1;
+        return view('frontend.product_details', compact('data'));
+    }
+
     public function contact()
     {
         $data['title'] = 'Contact Us - BabyBloom';

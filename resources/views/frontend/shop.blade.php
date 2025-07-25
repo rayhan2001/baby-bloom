@@ -202,7 +202,7 @@
                                         <span class="h6 text-primary fw-bold">$19.99</span>
                                         <span class="text-muted text-decoration-line-through small">$24.99</span>
                                     </div>
-                                    <a href="product-details.html" class="btn btn-primary rounded-pill w-100">
+                                    <a href="{{ route('frontend.product_details', ['id' => 2]) }}" class="btn btn-primary rounded-pill w-100">
                                         View Details
                                     </a>
                                 </div>
@@ -229,7 +229,7 @@
                                     <div class="product-price mb-3">
                                         <span class="h6 text-primary fw-bold">$29.99</span>
                                     </div>
-                                    <a href="product-details.html" class="btn btn-primary rounded-pill w-100">
+                                    <a href="{{ route('frontend.product_details', ['id' => 2]) }}" class="btn btn-primary rounded-pill w-100">
                                         View Details
                                     </a>
                                 </div>
@@ -256,7 +256,7 @@
                                     <div class="product-price mb-3">
                                         <span class="h6 text-primary fw-bold">$15.99</span>
                                     </div>
-                                    <a href="product-details.html" class="btn btn-primary rounded-pill w-100">
+                                    <a href="{{ route('frontend.product_details', ['id' => 2]) }}" class="btn btn-primary rounded-pill w-100">
                                         View Details
                                     </a>
                                 </div>
@@ -283,7 +283,7 @@
                                     <div class="product-price mb-3">
                                         <span class="h6 text-primary fw-bold">$199.99</span>
                                     </div>
-                                    <a href="product-details.html" class="btn btn-primary rounded-pill w-100">
+                                    <a href="{{ route('frontend.product_details', ['id' => 2]) }}" class="btn btn-primary rounded-pill w-100">
                                         View Details
                                     </a>
                                 </div>
@@ -313,7 +313,7 @@
                                     <div class="product-price mb-3">
                                         <span class="h6 text-primary fw-bold">$34.99</span>
                                     </div>
-                                    <a href="product-details.html" class="btn btn-primary rounded-pill w-100">
+                                    <a href="{{ route('frontend.product_details', ['id' => 2]) }}" class="btn btn-primary rounded-pill w-100">
                                         View Details
                                     </a>
                                 </div>
@@ -340,7 +340,7 @@
                                     <div class="product-price mb-3">
                                         <span class="h6 text-primary fw-bold">$12.99</span>
                                     </div>
-                                    <a href="product-details.html" class="btn btn-primary rounded-pill w-100">
+                                    <a href="{{ route('frontend.product_details', ['id' => 2]) }}" class="btn btn-primary rounded-pill w-100">
                                         View Details
                                     </a>
                                 </div>
@@ -367,7 +367,7 @@
                                     <div class="product-price mb-3">
                                         <span class="h6 text-primary fw-bold">$39.99</span>
                                     </div>
-                                    <a href="product-details.html" class="btn btn-primary rounded-pill w-100">
+                                    <a href="{{ route('frontend.product_details', ['id' => 2]) }}" class="btn btn-primary rounded-pill w-100">
                                         View Details
                                     </a>
                                 </div>
@@ -394,7 +394,7 @@
                                     <div class="product-price mb-3">
                                         <span class="h6 text-primary fw-bold">$24.99</span>
                                     </div>
-                                    <a href="product-details.html" class="btn btn-primary rounded-pill w-100">
+                                    <a href="{{ route('frontend.product_details', ['id' => 2]) }}" class="btn btn-primary rounded-pill w-100">
                                         View Details
                                     </a>
                                 </div>
@@ -421,7 +421,7 @@
                                     <div class="product-price mb-3">
                                         <span class="h6 text-primary fw-bold">$8.99</span>
                                     </div>
-                                    <a href="product-details.html" class="btn btn-primary rounded-pill w-100">
+                                    <a href="{{ route('frontend.product_details', ['id' => 2]) }}" class="btn btn-primary rounded-pill w-100">
                                         View Details
                                     </a>
                                 </div>

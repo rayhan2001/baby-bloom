@@ -4,7 +4,9 @@
             <div class="col-md-3">
                 <div class="logo">
                     <h2 class="mb-0 text-primary fw-bold">
-                        <i class="fas fa-baby text-pink me-2"></i>BabyBloom
+                        <a href="{{ route('frontend.home') }}" class="text-decoration-none">
+                            <i class="fas fa-baby text-pink me-2"></i>BabyBloom
+                        </a>
                     </h2>
                 </div>
             </div>
@@ -21,10 +23,10 @@
             </div>
             <div class="col-md-3">
                 <div class="header-actions d-flex justify-content-end align-items-center">
-                    <a href="login.html" class="btn btn-outline-primary rounded-pill me-2">
+                    <a href="{{ route('frontend.login') }}" class="btn btn-outline-primary rounded-pill me-2">
                         <i class="fas fa-user me-1"></i>Login
                     </a>
-                    <a href="cart.html" class="btn btn-pink rounded-pill position-relative">
+                    <a href="#" class="btn btn-pink rounded-pill position-relative">
                         <i class="fas fa-shopping-cart me-1"></i>Cart
                         <span
                             class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">3</span>

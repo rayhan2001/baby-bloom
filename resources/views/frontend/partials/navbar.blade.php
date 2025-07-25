@@ -6,10 +6,10 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav mx-auto">
                 <li class="nav-item">
-                    <a class="nav-link active fw-medium" href="{{ route('frontend.home') }}">Home</a>
+                    <a class="nav-link {{ request()->routeIs('frontend.home') ? 'active' : '' }} fw-medium" href="{{ route('frontend.home') }}">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link fw-medium" href="{{ route('frontend.shop') }}">Shop</a>
+                    <a class="nav-link {{ request()->routeIs('frontend.shop') ? 'active' : '' }} fw-medium" href="{{ route('frontend.shop') }}">Shop</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle fw-medium" href="#" role="button"
@@ -24,7 +24,7 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link fw-medium" href="{{ route('frontend.contact') }}">Contact</a>
+                    <a class="nav-link {{ request()->routeIs('frontend.contact') ? 'active' : '' }} fw-medium" href="{{ route('frontend.contact') }}">Contact</a>
                 </li>
             </ul>
         </div>
