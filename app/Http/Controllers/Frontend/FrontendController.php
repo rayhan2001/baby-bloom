@@ -72,8 +72,4 @@ class FrontendController extends Controller
         $data['title'] = 'Dashboard - BabyBloom';
         return view('frontend.dashboard', compact('data'));
     }
-    public function notFound()
-    {
-        return view('frontend.404');
-    }
 }
