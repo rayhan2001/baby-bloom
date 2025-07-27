@@ -20,7 +20,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        // Load admin routes
         Route::middleware('admin')
             ->group(base_path('routes/admin.php'));
     }

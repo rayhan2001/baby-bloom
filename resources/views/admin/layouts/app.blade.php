@@ -29,6 +29,7 @@
     <link href="{{ asset('adminAssets') }}/assets/css/light-theme.css" rel="stylesheet" />
     <link href="{{ asset('adminAssets') }}/assets/css/semi-dark.css" rel="stylesheet" />
     <link href="{{ asset('adminAssets') }}/assets/css/header-colors.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 
     <title>@yield('title')</title>
     @stack('css')
@@ -78,10 +79,17 @@
     <script src="{{ asset('adminAssets') }}/assets/js/app.js"></script>
     <script src="{{ asset('adminAssets') }}/assets/js/index.js"></script>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
     <script>
         new PerfectScrollbar(".best-product")
         new PerfectScrollbar(".top-sellers-list")
     </script>
+
+    {{-- Include Toastr Flash Messages Component --}}
+    <x-toastr />
+
+    @stack('js')
 
 
 </body>
