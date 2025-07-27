@@ -4,8 +4,8 @@
             <div class="nav-toggle-icon"><i class="bi bi-list"></i></div>
         </div>
         <ul class="nav nav-pills flex-column">
-            <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="right" title="Dashboards">
-                <button class="nav-link" data-bs-toggle="pill" data-bs-target="#pills-dashboards" type="button"><i class="bi bi-house-door-fill"></i></button>
+            <li class="nav-item" title="Dashboards">
+                <a href="#" class="nav-link text-center {{route('admin.dashboard') ? 'active' : ''}}"><i class="bi bi-house-door-fill"></i></a>
             </li>
             <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="right" title="Application">
                 <button class="nav-link" data-bs-toggle="pill" data-bs-target="#pills-application" type="button"><i class="bi bi-grid-fill"></i></button>

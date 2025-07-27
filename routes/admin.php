@@ -12,9 +12,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
     });
 
     Route::middleware('auth:admin')->group(function () {
-        Route::get('dashboard', function () {
-            return 'Welcome to Admin Dashboard';
-        })->name('dashboard');
+        Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
         Route::post('logout', [AuthController::class, 'logout'])->name('logout');
     });
