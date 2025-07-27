@@ -25,9 +25,9 @@
                     <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="#"
                         data-bs-toggle="dropdown">
                         <div class="user-setting d-flex align-items-center gap-1">
-                            <img src="{{ $data['collection']['image'] ?? asset('adminAssets') }}/assets/images/avatars/avatar-1.png"
+                            <img src="{{ $data['user']['image'] ?? asset('adminAssets') }}/assets/images/avatars/avatar-1.png"
                                 class="user-img" alt="">
-                            <div class="user-name d-none d-sm-block">{{ $data['collection']['name'] ?? 'John Doe' }}
+                            <div class="user-name d-none d-sm-block">{{ $data['user']['username'] ?? 'John Doe' }}
                             </div>
                         </div>
                     </a>
@@ -39,7 +39,7 @@
                                         alt="" class="rounded-circle" width="60" height="60">
                                     <div class="ms-3">
                                         <h6 class="mb-0 dropdown-user-name">
-                                            {{ $data['collection']['name'] ?? 'John Doe' }}</h6>
+                                            {{ $data['user']['username'] ?? 'John Doe' }}</h6>
                                     </div>
                                 </div>
                             </a>
@@ -48,7 +48,7 @@
                             <hr class="dropdown-divider">
                         </li>
                         <li>
-                            <a class="dropdown-item" href="pages-user-profile.html">
+                            <a class="dropdown-item" href="{{ route('admin.profile') }}">
                                 <div class="d-flex align-items-center">
                                     <div class="setting-icon"><i class="bi bi-person-fill"></i></div>
                                     <div class="setting-text ms-3"><span>Profile</span></div>

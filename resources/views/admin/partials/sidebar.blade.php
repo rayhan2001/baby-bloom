@@ -5,7 +5,7 @@
         </div>
         <ul class="nav nav-pills flex-column">
             <li class="nav-item" title="Dashboards">
-                <a href="#" class="nav-link text-center {{route('admin.dashboard') ? 'active' : ''}}"><i class="bi bi-house-door-fill"></i></a>
+                <a href="{{ route('admin.dashboard') }}" class="nav-link text-center {{route('admin.dashboard') ? 'active' : ''}}"><i class="bi bi-house-door-fill"></i></a>
             </li>
             <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="right" title="Application">
                 <button class="nav-link" data-bs-toggle="pill" data-bs-target="#pills-application" type="button"><i class="bi bi-grid-fill"></i></button>

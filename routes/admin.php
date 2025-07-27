@@ -12,8 +12,9 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
     Route::middleware('auth:admin')->group(function () {
         Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
+        Route::match(['GET', 'POST'], 'profile', [AuthController::class, 'profileUpdate'])->name('profile');
         Route::post('logout', [AuthController::class, 'logout'])->name('logout');
-        
+
     });
 
     Route::fallback(function () {

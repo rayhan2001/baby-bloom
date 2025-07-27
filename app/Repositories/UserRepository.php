@@ -14,6 +14,6 @@ class UserRepository
 
     public function AuthUser()
     {
-        return Auth::user();
+        return $this->model->find(Auth::id());
     }
 }

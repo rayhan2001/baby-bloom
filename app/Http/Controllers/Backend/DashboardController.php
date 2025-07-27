@@ -15,7 +15,7 @@ class DashboardController extends Controller
     public function index()
     {
         $data['title'] = 'Dashboard';
-        $data['collection'] = $this->repository->AuthUser();
+        $data['user'] = $this->repository->AuthUser();
         return view('admin.pages.dashboard', compact('data'));
     }
 }
