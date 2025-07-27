@@ -25,7 +25,7 @@
                     <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="#"
                         data-bs-toggle="dropdown">
                         <div class="user-setting d-flex align-items-center gap-1">
-                            <img src="{{ $data['user']['image'] ?? asset('adminAssets') }}/assets/images/avatars/avatar-1.png"
+                            <img src="{{ $data['user']->profile_picture }}"
                                 class="user-img" alt="">
                             <div class="user-name d-none d-sm-block">{{ $data['user']['username'] ?? 'John Doe' }}
                             </div>
@@ -35,7 +35,7 @@
                         <li>
                             <a class="dropdown-item" href="#">
                                 <div class="d-flex align-items-center">
-                                    <img src="{{ asset('adminAssets') }}/assets/images/avatars/avatar-1.png"
+                                    <img src="{{ $data['user']->profile_picture }}"
                                         alt="" class="rounded-circle" width="60" height="60">
                                     <div class="ms-3">
                                         <h6 class="mb-0 dropdown-user-name">

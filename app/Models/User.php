@@ -41,4 +41,13 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function getProfilePictureAttribute($value): string
+    {
+        if ($value && file_exists(storage_path('app/public/' . $value))) {
+            return asset('storage/' . $value);
+        }
+
+        return asset('adminAssets/assets/images/avatars/avatar-1.png'); // default avatar
+    }
 }

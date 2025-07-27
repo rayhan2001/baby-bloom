@@ -5,6 +5,7 @@ namespace App\Repositories;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use App\Helpers\ImageUploadHelper;
 
 class AuthRepository
 {
@@ -15,7 +16,7 @@ class AuthRepository
     public function login($request)
     {
         $credentials = $request->only('email', 'password');
-        
+
         $user = $this->model->where('email', $credentials['email'])
             ->where('is_admin', true)
             ->first();
@@ -24,10 +25,10 @@ class AuthRepository
             Auth::guard('admin')->login($user);
             return true;
         }
-        
+
         return false;
     }
-    
+
     public function logout()
     {
         Auth::guard('admin')->logout();
@@ -37,7 +38,7 @@ class AuthRepository
     public function updateProfile($request)
     {
         $user = Auth::guard('admin')->user();
-        
+
         $data = $request->only([
             'username',
             'first_name',
@@ -46,18 +47,18 @@ class AuthRepository
             'address',
             'city',
             'country',
-            'about_me'
+            'about_me',
+            'birthday',
         ]);
 
-        // Handle profile picture upload
         if ($request->hasFile('profile_picture')) {
-            $file = $request->file('profile_picture');
-            $filename = time() . '_' . $file->getClientOriginalName();
-            $file->move(public_path('uploads/profiles'), $filename);
-            $data['profile_picture'] = 'uploads/profiles/' . $filename;
+            $data['profile_picture'] = ImageUploadHelper::store(
+                $request->file('profile_picture'),
+                'profiles',
+                $user->profile_picture
+            );
         }
 
-        // Handle password change
         if ($request->filled('old_password') && $request->filled('new_password')) {
             if (Hash::check($request->old_password, $user->password)) {
                 $data['password'] = Hash::make($request->new_password);
