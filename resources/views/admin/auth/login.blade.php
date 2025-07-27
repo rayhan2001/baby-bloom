@@ -1,11 +1,9 @@
 <!doctype html>
 <html lang="en" class="minimal-theme">
 <head>
-  <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" href="{{ asset('adminAssets') }}/assets/images/favicon-32x32.png" type="image/png" />
-  <!-- Bootstrap CSS -->
   <link href="{{ asset('adminAssets') }}/assets/css/bootstrap.min.css" rel="stylesheet" />
   <link href="{{ asset('adminAssets') }}/assets/css/bootstrap-extended.css" rel="stylesheet" />
   <link href="{{ asset('adminAssets') }}/assets/css/style.css" rel="stylesheet" />
@@ -28,7 +26,7 @@
                             <div class="card-body p-4 p-sm-5">
                                 <h5 class="card-title">Sign In</h5>
                                 <p class="card-text mb-5">See your growth and get consulting support!</p>
-                                <form action="{{ route('admin.login.post') }}" method="POST">
+                                <form action="" method="POST">
                                     @csrf
                                     <div class="row g-3">
                                         <div class="col-12">
@@ -59,11 +57,9 @@
         </div>
     </main>
 
-    <!-- jQuery and Toastr JS -->
     <script src="{{ asset('adminAssets') }}/assets/js/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     
-    {{-- Include Toastr Flash Messages Component --}}
     <x-toastr />
     
 </body>
