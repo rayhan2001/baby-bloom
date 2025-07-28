@@ -48,6 +48,6 @@ class User extends Authenticatable
             return asset('storage/' . $value);
         }
 
-        return asset('adminAssets/assets/images/avatars/avatar-1.png'); // default avatar
+        return asset('adminAssets/assets/images/avatars/avatar-1.png');
     }
 }

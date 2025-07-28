@@ -2,7 +2,9 @@
 
 namespace App\Repositories;
 
+use App\Helpers\ImageUploadHelper;
 use App\Models\Category;
+use GuzzleHttp\Psr7\Request;
 use Illuminate\Support\Str;
 
 class CategoryRepository
@@ -29,8 +31,15 @@ class CategoryRepository
 
     public function store($request)
     {
-        $request['slug'] = Str::slug($request['name']);
-        return $this->model->create($request);
+        $data = $request->validated();
+
+        $data['slug'] = Str::slug($data['name']);
+
+        if ($request->hasFile('icon')) {
+            $data['icon'] = ImageUploadHelper::store($request->file('icon'), 'categories');
+        }
+
+        return $this->model->create($data);
     }
 
     public function show($id, $fields = ['*'])
@@ -41,8 +50,19 @@ class CategoryRepository
     public function update($id, $request)
     {
         $category = $this->model->findOrFail($id);
-        $request['slug'] = Str::slug($request['name']);
-        return $category->update($request);
+
+        $data = $request->validated();
+        $data['slug'] = Str::slug($data['name']);
+
+        if ($request->hasFile('icon')) {
+            $data['icon'] = ImageUploadHelper::store(
+                $request->file('icon'),
+                'categories',
+                $category->icon
+            );
+        }
+
+        return $category->update($data);
     }
 
     public function delete($id)

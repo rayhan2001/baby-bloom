@@ -25,6 +25,8 @@ class CategoryRequest extends FormRequest
         return [
             'name' => 'required|string|max:255',
             'slug' => 'nullable|string|max:255|unique:categories,slug',
+            'description' => 'nullable|string',
+            'icon' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'status' => 'required|in:active,inactive',
         ];
     }
@@ -36,6 +38,10 @@ class CategoryRequest extends FormRequest
             'slug.unique' => 'The slug must be unique.',
             'status.required' => 'The status is required.',
             'status.in' => 'The selected status is invalid.',
+            'icon.image' => 'The icon must be an image file.',
+            'icon.mimes' => 'The icon must be a file of type: jpeg,png,jpg,gif,svg.',
+            'icon.max' => 'The icon may not be greater than 2MB.',
+            'description.string' => 'The description must be a string.',
         ];
     }
 }

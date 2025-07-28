@@ -29,7 +29,7 @@ class CategoryController extends Controller
     public function store(CategoryRequest $request)
     {
         try {
-            $this->repository->store($request->validated());
+            $this->repository->store($request);
             return redirect()->route('admin.categories.index')->with('success', 'Category created successfully.');
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Failed to create category: ' . $e->getMessage());
@@ -39,7 +39,7 @@ class CategoryController extends Controller
     public function update(CategoryRequest $request, $id)
     {
         try {
-            $this->repository->update($id, $request->validated());
+            $this->repository->update($id, $request);
             return redirect()->route('admin.categories.index')->with('success', 'Category updated successfully.');
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Failed to update category: ' . $e->getMessage());
