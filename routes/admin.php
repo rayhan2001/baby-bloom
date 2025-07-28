@@ -4,6 +4,7 @@ use App\Http\Controllers\Backend\AuthController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\ColorController;
 use App\Http\Controllers\Backend\DashboardController;
+use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\SizeController;
 use Illuminate\Support\Facades\Route;
 
@@ -37,6 +38,15 @@ Route::prefix('admin')->name('admin.')->group(function () {
             Route::post('colors/store', 'store')->name('colors.store');
             Route::put('colors/update/{id}', 'update')->name('colors.update');
             Route::delete('colors/delete/{id}', 'destroy')->name('colors.destroy');
+        });
+
+        Route::controller(ProductController::class)->group(function () {
+            Route::get('products', 'index')->name('products.index');
+            Route::get('products/create', 'create')->name('products.create');
+            Route::post('products/store', 'store')->name('products.store');
+            Route::get('products/edit/{id}', 'edit')->name('products.edit');
+            Route::put('products/update/{id}', 'update')->name('products.update');
+            Route::delete('products/delete/{id}', 'destroy')->name('products.destroy');
         });
 
     });

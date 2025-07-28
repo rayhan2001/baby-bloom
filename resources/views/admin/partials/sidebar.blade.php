@@ -89,9 +89,9 @@
             <div class="tab-pane fade" id="pills-ecommerce">
                 <div class="list-group list-group-flush">
                     <a href="{{ route('admin.categories.index') }}" class="list-group-item text-black"><i class="bi bi-card-text"></i>Categories</a>
-                    <a href="{{ route('admin.sizes.index') }}" class="list-group-item text-black"><i class="bi bi-aspect-ratio"></i>Sizes</a>
-                    <a href="{{ route('admin.colors.index') }}" class="list-group-item text-black"><i class="bi bi-palette"></i>Colors</a>
-                    <a href="ecommerce-products-list.html" class="list-group-item"><i class="bi bi-box-seam"></i>Products List</a>
+                    <a href="{{ route('admin.sizes.index') }}" class="list-group-item"><i class="bi bi-aspect-ratio"></i>Sizes</a>
+                    <a href="{{ route('admin.colors.index') }}" class="list-group-item"><i class="bi bi-palette"></i>Colors</a>
+                    <a href="{{ route('admin.products.index') }}" class="list-group-item"><i class="bi bi-box-seam"></i>Products List</a>
                     <a href="ecommerce-products-grid.html" class="list-group-item"><i class="bi bi-box-seam"></i>Products Grid</a>
                     <a href="ecommerce-orders.html" class="list-group-item"><i class="bi bi-plus-square"></i>Orders</a>
                     <a href="ecommerce-orders-detail.html" class="list-group-item"><i class="bi bi-handbag"></i>Orders Detail</a>
