@@ -4,7 +4,7 @@ namespace App\Repositories;
 
 use App\Helpers\ImageUploadHelper;
 use App\Models\Category;
-use GuzzleHttp\Psr7\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class CategoryRepository
@@ -68,6 +68,9 @@ class CategoryRepository
     public function delete($id)
     {
         $category = $this->model->findOrFail($id);
+        if ($category->icon && Storage::disk('public')->exists($category->icon)) {
+            Storage::disk('public')->delete($category->icon);
+        }
         return $category->delete();
     }
 }
