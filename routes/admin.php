@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Backend\AuthController;
+use App\Http\Controllers\Backend\BrandController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\ColorController;
 use App\Http\Controllers\Backend\DashboardController;
@@ -24,6 +25,13 @@ Route::prefix('admin')->name('admin.')->group(function () {
             Route::post('categories/store', 'store')->name('categories.store');
             Route::put('categories/update/{id}', 'update')->name('categories.update');
             Route::delete('categories/delete/{id}', 'destroy')->name('categories.destroy');
+        });
+
+        Route::controller(BrandController::class)->group(function () {
+            Route::get('brands', 'index')->name('brands.index');
+            Route::post('brands/store', 'store')->name('brands.store');
+            Route::put('brands/update/{id}', 'update')->name('brands.update');
+            Route::delete('brands/delete/{id}', 'destroy')->name('brands.destroy');
         });
 
         Route::controller(SizeController::class)->group(function () {

@@ -12,12 +12,12 @@
                         <div class="card border shadow-none w-100">
                             <div class="card-body">
                                 <form class="row" method="POST"
-                                    action="{{ isset($data['color']) ? route('admin.colors.update', $data['color']->id) : route('admin.colors.store') }}">
+                                    action="{{ isset($data['category']) ? route('admin.categories.update', $data['category']->id) : route('admin.categories.store') }}" enctype="multipart/form-data">
                                     @csrf
-                                    @if (isset($data['color']))
+                                    @if (isset($data['category']))
                                         @method('PUT')
                                     @endif
-                                    @include('admin.colors.form')
+                                    @include('admin.brands.form')
                                 </form>
                             </div>
                         </div>
@@ -30,6 +30,7 @@
                                     <thead>
                                         <tr>
                                             <th>ID</th>
+                                            <th>Image</th>
                                             <th>Name</th>
                                             <th>Slug</th>
                                             <th>Status</th>
@@ -40,17 +41,20 @@
                                         @forelse($data['collections'] as $row)
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
-                                                <td>{{ $row->title }}</td>
+                                                <td>
+                                                    <img src="{{ $row->image }}" alt=" Brand Image" width="40" height="40" class="rounded-circle">
+                                                </td>
+                                                <td>{{ $row->name }}</td>
                                                 <td>{{ $row->slug }}</td>
                                                 <td><x-form.status :value="$row->status" :data="['active', 'inactive']" /></td>
                                                 <td>
                                                     <div class="d-flex align-items-center gap-2">
-                                                        <a href="{{ route('admin.colors.index', ['id' => $row->id]) }}"
+                                                        <a href="{{ route('admin.brands.index', ['id' => $row->id]) }}"
                                                             class="text-warning">
                                                             <i class="bi bi-pencil-fill"></i>
                                                         </a>
                                                         <form method="POST"
-                                                            action="{{ route('admin.colors.destroy', $row->id) }}"
+                                                            action="{{ route('admin.brands.destroy', $row->id) }}"
                                                             onsubmit="return confirm('Are you sure?')">
                                                             @csrf
                                                             @method('DELETE')
@@ -63,7 +67,7 @@
                                             </tr>
                                         @empty
                                             <tr>
-                                                <td colspan="5" class="text-center text-muted">No categories found.</td>
+                                                <td colspan="6" class="text-center text-muted">No brands found.</td>
                                             </tr>
                                         @endforelse
                                     </tbody>

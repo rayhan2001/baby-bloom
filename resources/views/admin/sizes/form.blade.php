@@ -5,6 +5,6 @@
     <x-form.select name="status" label="Status" :options="['active' => 'Active', 'inactive' => 'Inactive']" placeholder="Select status" :required="true"
         :selected="$data['size']->status ?? old('status', $data['size']->status ?? '')" />
 </div>
-<div class="col-2">
-    <x-form.button type="submit" class="btn-primary" label="Submit Product" />
+<div class="col-12">
+    <x-form.button type="submit" class="btn-primary" label="{{ isset($data['size']) ? 'Update' : 'Create' }} Size" />
 </div>
