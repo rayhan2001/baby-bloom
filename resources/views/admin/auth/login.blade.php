@@ -26,20 +26,33 @@
                             <div class="card-body p-4 p-sm-5">
                                 <h5 class="card-title">Sign In</h5>
                                 <p class="card-text mb-5">See your growth and get consulting support!</p>
-                                <form action="" method="POST">
+                                <form action="{{ route('admin.login.store') }}" method="POST">
                                     @csrf
                                     <div class="row g-3">
                                         <div class="col-12">
-                                            <label for="email" class="form-label">Email Address</label>
-                                            <input type="email" class="form-control radius-30 ps-5" id="email"
-                                                name="email" value="{{ old('email') }}" placeholder="Email Address" required>
+                                            <label for="email" class="form-label">Email Address <sup class="text-danger">*</sup></label>
+                                            <input type="email" 
+                                                name="email" 
+                                                value="{{ old('email') }}" 
+                                                class="form-control radius-30 ps-5 @error('email') is-invalid @enderror" 
+                                                placeholder="Email Address">
+                                            @error('email')
+                                                <div class="invalid-feedback d-block">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
                                         </div>
                                         <div class="col-12">
-                                            <label for="password" class="form-label">Enter
-                                                Password</label>
-                                            <input type="password" class="form-control radius-30 ps-5"
-                                                id="password" name="password" placeholder="Enter Password"
-                                                required>
+                                            <label for="password" class="form-label">Enter Password <sup class="text-danger">*</sup></label>
+                                            <input type="password" 
+                                                name="password" 
+                                                class="form-control radius-30 ps-5 @error('password') is-invalid @enderror" 
+                                                placeholder="Enter Password">
+                                            @error('password')
+                                                <div class="invalid-feedback d-block">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
                                         </div>
                                         <div class="col-12">
                                             <div class="d-grid">

@@ -12,12 +12,14 @@ use Illuminate\Support\Facades\Route;
 Route::prefix('admin')->name('admin.')->group(function () {
 
     Route::middleware('guest:admin')->group(function () {
-        Route::match(['GET', 'POST'], 'login', [AuthController::class, 'login'])->name('login');
+        Route::get('login', [AuthController::class, 'loginPage'])->name('login');
+        Route::post('login', [AuthController::class, 'store'])->name('login.store');
     });
 
     Route::middleware('auth:admin')->group(function () {
         Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
-        Route::match(['GET', 'POST'], 'profile', [AuthController::class, 'profileUpdate'])->name('profile');
+        Route::get('profile', [AuthController::class, 'profilePage'])->name('profile');
+        Route::post('profile/update', [AuthController::class, 'profileUpdate'])->name('profile.update');
         Route::post('logout', [AuthController::class, 'logout'])->name('logout');
 
         Route::controller(CategoryController::class)->group(function () {
