@@ -12,9 +12,10 @@
                         <div class="card border shadow-none w-100">
                             <div class="card-body">
                                 <form class="row" method="POST"
-                                    action="{{ isset($data['category']) ? route('admin.categories.update', $data['category']->id) : route('admin.categories.store') }}" enctype="multipart/form-data">
+                                    action="{{ isset($data['brand']) ? route('admin.brands.update', $data['brand']->id) : route('admin.brands.store') }}"
+                                    enctype="multipart/form-data">
                                     @csrf
-                                    @if (isset($data['category']))
+                                    @if (isset($data['brand']))
                                         @method('PUT')
                                     @endif
                                     @include('admin.brands.form')
@@ -42,7 +43,8 @@
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
                                                 <td>
-                                                    <img src="{{ $row->image }}" alt=" Brand Image" width="40" height="40" class="rounded-circle">
+                                                    <img src="{{ $row->image }}" alt=" Brand Image" width="40"
+                                                        height="40" class="rounded-circle">
                                                 </td>
                                                 <td>{{ $row->name }}</td>
                                                 <td>{{ $row->slug }}</td>

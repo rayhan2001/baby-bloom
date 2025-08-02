@@ -2,8 +2,10 @@
 
 namespace App\Repositories;
 
+use App\Helpers\ImageUploadHelper;
 use App\Models\Brand;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 
 class BrandRepository
 {
@@ -16,7 +18,7 @@ class BrandRepository
         $query = $this->model->select($fields);
 
         if ($search = $request->input('search')) {
-            $query->where('title', 'like', "%$search%");
+            $query->where('name', 'like', "%$search%");
         }
 
         if ($status = $request->input('status')) {
@@ -30,27 +32,40 @@ class BrandRepository
     public function store($request)
     {
         $data = $request->validated();
-        $data['slug'] = Str::slug($data['title']);
+        $data['slug'] = Str::slug($data['name']);
+        if ($request->hasFile('image')) {
+            $data['image'] = ImageUploadHelper::store($request->file('image'), 'brands');
+        }
         return $this->model->create($data);
     }
 
-    public function show($id, $fields = ['*'])
+    public function show($id)
     {
-        return $this->model->select($fields)->findOrFail($id);
+        return $this->model->findOrFail($id);
     }
 
     public function update($id, $request)
     {
-        $size = $this->model->findOrFail($id);
+        $brand = $this->model->findOrFail($id);
 
         $data = $request->validated();
-        $data['slug'] = Str::slug($data['title']);
-        return $size->update($data);
+        $data['slug'] = Str::slug($data['name']);
+        if ($request->hasFile('image')) {
+            $data['image'] = ImageUploadHelper::store(
+                $request->file('image'),
+                'brands',
+                $brand->image
+            );
+        }
+        return $brand->update($data);
     }
 
     public function delete($id)
     {
-        $size = $this->model->findOrFail($id);
-        return $size->delete();
+        $brand = $this->model->findOrFail($id);
+        if ($brand->image && Storage::disk('public')->exists($brand->image)) {
+            Storage::disk('public')->delete($brand->image);
+        }
+        return $brand->delete();
     }
 }

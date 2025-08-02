@@ -21,11 +21,17 @@ class BrandRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
-            'title' => 'required|string|max:255|unique:brands,title,' . $this->route('brand'),
+        $rules = [
+            'name' => 'required|string|max:255',
             'description' => 'nullable|string|max:1000',
             'image' => 'nullable|image|max:2048',
             'status' => 'required|in:active,inactive',
         ];
+
+        if ($this->method() === 'PUT') {
+            $rules['name'] = 'required|string|max:255' . $this->route('brand');
+        }
+
+        return $rules;
     }
 }

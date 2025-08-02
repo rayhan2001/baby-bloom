@@ -19,6 +19,11 @@ class BrandController extends Controller
         $data['cardTitle'] = 'Brands List';
         $data['formTitle'] = 'Brands';
         $data['collections'] = $this->repository->getPaginateData($request);
+        if ($request->has('id')) {
+            $data['title'] = 'Edit Brand';
+            $data['formTitle'] = 'Edit Brand';
+            $data['brand'] = $this->repository->show($request->id);
+        }
         return view('admin.brands.index', compact('data'));
     }
 
@@ -26,19 +31,29 @@ class BrandController extends Controller
     {
         try {
             $this->repository->store($request);
-            return redirect()->route('admin.categories.index')->with('success', 'Category created successfully.');
+            return redirect()->route('admin.brands.index')->with('success', 'Brand created successfully.');
         } catch (\Exception $e) {
-            return redirect()->back()->with('error', 'Failed to create category: ' . $e->getMessage());
+            return redirect()->back()->with('error', 'Failed to create brand: ' . $e->getMessage());
         }
     }
 
-    public function update(Request $request, $id)
+    public function update(BrandRequest $request, $id)
     {
-        // Logic to update an existing brand
+        try {
+            $this->repository->update($id, $request);
+            return redirect()->route('admin.brands.index')->with('success', 'Brand updated successfully.');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Failed to update brand: ' . $e->getMessage());
+        }
     }
 
     public function destroy($id)
     {
-        // Logic to delete a brand
+        try {
+            $this->repository->delete($id);
+            return redirect()->route('admin.brands.index')->with('success', 'Brand deleted successfully.');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Failed to delete brand: ' . $e->getMessage());
+        }
     }
 }

@@ -34,9 +34,9 @@ class ColorRepository
         return $this->model->create($data);
     }
 
-    public function show($id, $fields = ['*'])
+    public function show($id)
     {
-        return $this->model->select($fields)->findOrFail($id);
+        return $this->model->findOrFail($id);
     }
 
     public function update($id, $request)
