@@ -12,11 +12,23 @@ class AdminSeeder extends Seeder
      */
     public function run(): void
     {
-        User::create([
-            'name' => 'Super Admin',
-            'email' => 'admin@gmail.com',
-            'password' => bcrypt('password'),
-            'is_admin' => true, 
-        ]);
+        $existingAdmin = User::where('email', 'admin@gmail.com')->first();
+
+        if (!$existingAdmin) {
+            User::create([
+                'username' => 'Super Admin',
+                'email' => 'admin@gmail.com',
+                'password' => bcrypt('password'),
+                'is_admin' => true,
+            ]);
+
+            echo "Admin user created successfully!\n";
+            echo "Email: admin@gmail.com\n";
+            echo "Password: password\n";
+        } else {
+            echo "Admin user already exists!\n";
+            echo "Email: admin@gmail.com\n";
+            echo "Password: password\n";
+        }
     }
 }
