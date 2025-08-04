@@ -2,13 +2,17 @@
 
 namespace App\Repositories;
 
+use App\Models\Brand;
+use App\Models\Category;
 use App\Models\Size;
 use Illuminate\Support\Str;
 
 class ProductRepository
 {
     public function __construct(
-        protected Size $model
+        protected Size $model,
+        protected Category $categoryModel,
+        protected Brand $brandModel
     ) {}
 
     public function getPaginateData($request, $fields = ['*'])
@@ -24,6 +28,24 @@ class ProductRepository
         }
 
         return $query->paginate(10);
+    }
+
+    public function getCategories()
+    {
+        return $this->categoryModel->where('status', 'active')->get();
+    }
+    public function getSizes()
+    {
+        return $this->model->where('status', 'active')->get();
+    }
+    public function getColor()
+    {
+        return $this->model->where('status', 'active')->get();
+    }
+
+    public function getBrands()
+    {
+        return $this->brandModel->where('status', 'active')->get();
     }
 
 

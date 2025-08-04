@@ -23,14 +23,15 @@
     <!-- loader-->
     <link href="{{ asset('adminAssets') }}/assets/css/pace.min.css" rel="stylesheet" />
 
-
     <!--Theme Styles-->
     <link href="{{ asset('adminAssets') }}/assets/css/dark-theme.css" rel="stylesheet" />
     <link href="{{ asset('adminAssets') }}/assets/css/light-theme.css" rel="stylesheet" />
     <link href="{{ asset('adminAssets') }}/assets/css/semi-dark.css" rel="stylesheet" />
     <link href="{{ asset('adminAssets') }}/assets/css/header-colors.css" rel="stylesheet" />
+    <!-- Quill CSS -->
+    <link href="{{ asset('adminAssets/assets/plugins/quill/quill.snow.css') }}" rel="stylesheet">
+    <link href="{{ asset('adminAssets/assets/plugins/quill/quill.core.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
-
     <title>@yield('title')</title>
     @stack('css')
 </head>
@@ -78,6 +79,9 @@
     <!--app-->
     <script src="{{ asset('adminAssets') }}/assets/js/app.js"></script>
     <script src="{{ asset('adminAssets') }}/assets/js/index.js"></script>
+    <!-- Quill JS -->
+    <script src="{{ asset('adminAssets/assets/plugins/quill/quill.min.js') }}"></script>
+    <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 

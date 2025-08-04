@@ -11,7 +11,8 @@
                     <div class="col-12 col-lg-12 d-flex">
                         <div class="card border shadow-none w-100">
                             <div class="card-body">
-                                <form class="row" method="POST" action="{{ route('admin.sizes.store') }}">
+                                <form class="row" method="POST" action="{{ route('admin.products.store') }}"
+                                    enctype="multipart/form-data">
                                     @csrf
                                     @include('admin.products.form')
                                 </form>
