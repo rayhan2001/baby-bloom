@@ -28,6 +28,8 @@
     <link href="{{ asset('adminAssets') }}/assets/css/light-theme.css" rel="stylesheet" />
     <link href="{{ asset('adminAssets') }}/assets/css/semi-dark.css" rel="stylesheet" />
     <link href="{{ asset('adminAssets') }}/assets/css/header-colors.css" rel="stylesheet" />
+    <link href="{{ asset('adminAssets') }}/assets/plugins/select2/css/select2.min.css" rel="stylesheet" />
+    <link href="{{ asset('adminAssets') }}/assets/plugins/select2/css/select2-bootstrap4.css" rel="stylesheet" />
     <!-- Quill CSS -->
     <link href="{{ asset('adminAssets/assets/plugins/quill/quill.snow.css') }}" rel="stylesheet">
     <link href="{{ asset('adminAssets/assets/plugins/quill/quill.core.css') }}" rel="stylesheet">
@@ -79,6 +81,8 @@
     <!--app-->
     <script src="{{ asset('adminAssets') }}/assets/js/app.js"></script>
     <script src="{{ asset('adminAssets') }}/assets/js/index.js"></script>
+    <script src="{{ asset('adminAssets') }}/assets/plugins/select2/js/select2.min.js"></script>
+    <script src="{{ asset('adminAssets') }}/assets/js/form-select2.js"></script>
     <!-- Quill JS -->
     <script src="{{ asset('adminAssets/assets/plugins/quill/quill.min.js') }}"></script>
     <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>

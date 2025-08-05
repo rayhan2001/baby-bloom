@@ -32,20 +32,20 @@ class ProductRepository
 
     public function getCategories()
     {
-        return $this->categoryModel->where('status', 'active')->get();
+        return $this->categoryModel->select('id', 'name')->where('status', 'active')->get();
     }
     public function getSizes()
     {
-        return $this->model->where('status', 'active')->get();
+        return $this->model->select('id', 'title')->where('status', 'active')->get();
     }
     public function getColor()
     {
-        return $this->model->where('status', 'active')->get();
+        return $this->model->select('id', 'title')->where('status', 'active')->get();
     }
 
     public function getBrands()
     {
-        return $this->brandModel->where('status', 'active')->get();
+        return $this->brandModel->select('id', 'name')->where('status', 'active')->get();
     }
 
 

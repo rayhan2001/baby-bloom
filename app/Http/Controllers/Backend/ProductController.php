@@ -28,6 +28,7 @@ class ProductController extends Controller
         $data['brands'] = $this->repository->getBrands();
         $data['colors'] = $this->repository->getColor();
         $data['sizes'] = $this->repository->getSizes();
+
         return view('admin.products.create', compact('data'));
     }
 

@@ -28,13 +28,23 @@
     </div>
 
     <div class="col-12 col-md-6">
-        <x-form.select name="category_id" label="Category" :options="$categories" placeholder="Select category"
-            :required="true" :selected="$data['product']->category_id ?? old('category_id', $data['product']->category_id ?? '')" />
+        <x-form.multiselect name="categories[]" label="Categories" :options="$data['categories']->pluck('name', 'id')" :selected="old('categories', [])"
+            placeholder="Select Category" required />
     </div>
 
     <div class="col-12 col-md-6">
-        <x-form.select name="brand_id" label="Brand" :options="$brands" placeholder="Select brand" :required="true"
-            :selected="$data['product']->brand_id ?? old('brand_id', $data['product']->brand_id ?? '')" />
+        <x-form.multiselect name="brands[]" label="Brands" :options="$data['brands']->pluck('name', 'id')" :selected="old('brands', [])"
+            placeholder="Select Brand" required />
+    </div>
+
+    <div class="col-12 col-md-6">
+        <x-form.multiselect name="colors[]" label="Colors" :options="$data['colors']->pluck('title', 'id')" :selected="old('colors', [])"
+            placeholder="Select Color" required />
+    </div>
+
+    <div class="col-12 col-md-6">
+        <x-form.multiselect name="sizes[]" label="Sizes" :options="$data['sizes']->pluck('title', 'id')" :selected="old('sizes', [])"
+            placeholder="Select Size" required />
     </div>
 
     <div class="col-12">
