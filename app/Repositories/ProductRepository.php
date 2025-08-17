@@ -4,15 +4,19 @@ namespace App\Repositories;
 
 use App\Models\Brand;
 use App\Models\Category;
+use App\Models\Color;
+use App\Models\Product;
 use App\Models\Size;
 use Illuminate\Support\Str;
 
 class ProductRepository
 {
     public function __construct(
-        protected Size $model,
+        protected Product $model,
         protected Category $categoryModel,
-        protected Brand $brandModel
+        protected Brand $brandModel,
+        protected Color $colorModel,
+        protected Size $sizeModel
     ) {}
 
     public function getPaginateData($request, $fields = ['*'])
@@ -36,11 +40,11 @@ class ProductRepository
     }
     public function getSizes()
     {
-        return $this->model->select('id', 'title')->where('status', 'active')->get();
+        return $this->sizeModel->select('id', 'title')->where('status', 'active')->get();
     }
     public function getColor()
     {
-        return $this->model->select('id', 'title')->where('status', 'active')->get();
+        return $this->colorModel->select('id', 'title')->where('status', 'active')->get();
     }
 
     public function getBrands()
@@ -48,12 +52,16 @@ class ProductRepository
         return $this->brandModel->select('id', 'name')->where('status', 'active')->get();
     }
 
-
     public function store($request)
     {
-        $data = $request->validated();
-        $data['slug'] = Str::slug($data['title']);
-        return $this->model->create($data);
+        $product = $this->model->create($request);
+
+        $product->categories()->sync($request->input('categories', []));
+        $product->sizes()->sync($request->input('sizes', []));
+        $product->colors()->sync($request->input('colors', []));
+        $product->brands()->sync($request->input('brands', []));
+
+        return $product;
     }
 
     public function show($id, $fields = ['*'])

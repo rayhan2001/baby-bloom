@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\ProjectRequest;
+use App\Http\Requests\ProductRequest;
 use App\Repositories\ProductRepository;
 use Illuminate\Http\Request;
 
@@ -25,21 +25,19 @@ class ProductController extends Controller
     {
         $data['title'] = 'Add Product';
         $data['categories'] = $this->repository->getCategories();
-        $data['brands'] = $this->repository->getBrands();
-        $data['colors'] = $this->repository->getColor();
         $data['sizes'] = $this->repository->getSizes();
-
+        $data['colors'] = $this->repository->getColor();
+        $data['brands'] = $this->repository->getBrands();
         return view('admin.products.create', compact('data'));
     }
 
-    public function store(ProjectRequest $request)
+    public function store(ProductRequest $request)
     {
-        dd('ok');
         try {
-            $this->repository->store($request);
-            return redirect()->route('admin.sizes.index')->with('success', 'Size created successfully.');
+            $this->repository->store($request->all());
+            return redirect()->route('admin.products.index')->with('success', 'Product created successfully.');
         } catch (\Exception $e) {
-            return redirect()->back()->with('error', 'Failed to create size: ' . $e->getMessage());
+            return redirect()->back()->with('error', 'Failed to create product: ' . $e->getMessage());
         }
     }
 
